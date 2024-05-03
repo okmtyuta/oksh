@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ "$1" = "greet" ]; then
+    ./subcommand/greet.zsh
+elif [ "$1" = "help" ]; then
+    ./subcommand/help.zsh
+else
+    ./subcommand/help.zsh
+fi
