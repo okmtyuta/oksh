@@ -1,9 +1,20 @@
 #!/bin/sh
 
-if [ "$1" = "greet" ]; then
-    ./subcommand/greet.zsh
-elif [ "$1" = "help" ]; then
-    ./subcommand/help.zsh
+if [ "$1" = "dev" ]; then
+    if [ "$2" = "python" ]; then
+        if [ "$3" = "init" ]; then
+            python -m venv env
+            git init
+            touch .gitignore
+            echo env >>.gitignore
+            touch Makefile
+            echo "prepush:\n\t@pip freeze > requirements.txt" >>Makefile
+        fi
+    fi
+
+elif [ "$1" = "env" ]; then
+    $HOME/.okmtyuta/oksh/subcommand/environment_variables.zsh "$2" "$3" "$4"
+
 else
-    ./subcommand/help.zsh
+    echo command not found
 fi
